@@ -2,7 +2,9 @@
 @* Namespace directive required to recognize the code-behind file *@
 @namespace FluxorTutorial.Pages.Counter
 @* The following inherits directive not stricly needed since it is the only actor updating the state *@
-@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@* @inherits Fluxor.Blazor.Web.Components.FluxorComponent *@
+@* If (i.e. multi-)inheritance isn't available, use the IDisposable pattern *@
+@implements IDisposable
 
 <PageTitle>Counter</PageTitle>
 
