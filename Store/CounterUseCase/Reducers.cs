@@ -1,3 +1,5 @@
+namespace FluxorTutorial.Store.CounterUseCase;
+
 public static class Reducers
 {
     [ReducerMethod]

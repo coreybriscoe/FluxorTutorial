@@ -1,0 +1,27 @@
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@inject IState<ToolbarState> ToolbarState
+@inject IDispatcher Dispatcher
+
+<div>
+    @ToolbarState.Value.Message
+    @if (ToolbarState.Value.Enabled)
+    {
+        <button style="color: blue" @onclick="ToggleEnabledButtonClicked">Enabled</button>
+    }
+    else
+    {
+        <button style="color: red" @onclick="ToggleEnabledButtonClicked">Disabled</button>
+    }
+    <button @onclick="UpdateMessageButtonClicked">Update Message</button>
+</div>
+
+@code {
+    void ToggleEnabledButtonClicked()
+    {
+        Dispatcher.Dispatch(new SetEnabledAction(!ToolbarState.Value.Enabled));
+    }
+    void UpdateMessageButtonClicked()
+    {
+        Dispatcher.Dispatch(new SetMessageAction("Message updated from toolbar at " + DateTime.Now.ToString("HH:mm:ss")));
+    }
+}
